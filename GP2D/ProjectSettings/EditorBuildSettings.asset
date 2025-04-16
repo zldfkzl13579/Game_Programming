@@ -5,9 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5f463dbc21122e24f8e51710096a1064
+  - enabled: 1
+    path: Assets/Scenes/Roulette.unity
+    guid: a7e8db364c487c847a171b366decd304
+  - enabled: 1
+    path: Assets/Scenes/SwipeCar.unity
+    guid: 5bc3817b2d5b19e41a42ca91b5317143
+  - enabled: 1
+    path: Assets/Scenes/CatEscape.unity
+    guid: 0cd59a3f1f4bb8f4692d65c7d42631c7
+  - enabled: 1
+    path: Assets/Scenes/ClimbCloud.unity
+    guid: 1e78edbd6802af04299387e79ec6cc91
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
