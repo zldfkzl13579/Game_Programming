@@ -9,9 +9,15 @@ public class GameDirector_CarGame : MonoBehaviour
     GameObject flag;
     GameObject distance;
 
-    private void Start()
+	[Header("Screen Orientation Settings")]
+	public ScreenOrientation targetOrientation = ScreenOrientation.LandscapeLeft;
+
+	private void Start()
     {
-        this.car = GameObject.Find("car");
+		Debug.Log($"Applying screen settings for scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+		Screen.orientation = targetOrientation;
+
+		this.car = GameObject.Find("car");
         this.flag = GameObject.Find("flag");
         this.distance = GameObject.Find("Distance");
     }

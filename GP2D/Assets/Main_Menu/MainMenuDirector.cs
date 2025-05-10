@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDirector_AAG : MonoBehaviour
+public class MainMenuDirector : MonoBehaviour
 {
-    GameObject hpGauge;
-
 	[Header("Screen Orientation Settings")]
-	public ScreenOrientation targetOrientation = ScreenOrientation.LandscapeLeft;
+	public ScreenOrientation targetOrientation = ScreenOrientation.Portrait;
 
 	void Start()
-    {
+	{
 		Debug.Log($"Applying screen settings for scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
 		Screen.orientation = targetOrientation;
-		this.hpGauge = GameObject.Find("hpGauge");
-    }
-
-    public void DecreaseHp()
-    {
-        this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
-    }
+	}
 }
