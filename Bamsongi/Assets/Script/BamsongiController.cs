@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class BamsongiController : MonoBehaviour
 {
-    public void Shoot(Vector3 dir)
-    {
-        GetComponent<Rigidbody>().AddForce(dir);
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		Application.targetFrameRate = 60;
 
-	void OnCollisionEnter(Collision other)
+		//Shoot(new Vector3(0, 200, 3000));
+	}
+
+	public void Shoot(Vector3 dir)
+	{
+		GetComponent<Rigidbody>().AddForce(dir);
+	}
+
+	private void OnCollisionEnter(Collision collision)
 	{
 		GetComponent<Rigidbody>().isKinematic = true;
 		GetComponent<ParticleSystem>().Play();
-	}
-
-	void Start()
-	{
-		// Shoot(new Vector3(0, 200, 2000));
 	}
 }
