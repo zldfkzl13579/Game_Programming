@@ -1,0 +1,736 @@
+fileFormatVersion: 2
+guid: 40346430551062c40a9d7d2cae552330
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1242313520671453758
+    second: BigZombie - Attack_0
+  - first:
+      213: 5432985488726873743
+    second: BigZombie - Attack_1
+  - first:
+      213: 5833435650644106127
+    second: BigZombie - Attack_2
+  - first:
+      213: -2186882825164240540
+    second: BigZombie - Attack_3
+  - first:
+      213: -7970683883023938402
+    second: BigZombie - Attack_4
+  - first:
+      213: -4376563845932588666
+    second: BigZombie - Attack_5
+  - first:
+      213: 1293977971286343644
+    second: BigZombie - Attack_6
+  - first:
+      213: -1821171913045012834
+    second: BigZombie - Attack_7
+  - first:
+      213: -3908408323786789720
+    second: BigZombie - Attack_8
+  - first:
+      213: -1566254358091898320
+    second: BigZombie - Attack_9
+  - first:
+      213: -9122016536597038705
+    second: BigZombie - Attack_10
+  - first:
+      213: 1141375294309110317
+    second: BigZombie - Attack_11
+  - first:
+      213: 129810898471870999
+    second: BigZombie - Attack_12
+  - first:
+      213: -1013424504516056429
+    second: BigZombie - Attack_13
+  - first:
+      213: 688519186162711033
+    second: BigZombie - Attack_14
+  - first:
+      213: 1444038388245943695
+    second: BigZombie - Attack_15
+  - first:
+      213: 2041572393406025003
+    second: BigZombie - Attack_16
+  - first:
+      213: -2035681483570679249
+    second: BigZombie - Attack_17
+  - first:
+      213: 5739705368976813679
+    second: BigZombie - Attack_18
+  - first:
+      213: 3213418476104716453
+    second: BigZombie - Attack_19
+  - first:
+      213: 6866430405885073083
+    second: BigZombie - Attack_20
+  - first:
+      213: 4469295340253315567
+    second: BigZombie - Attack_21
+  - first:
+      213: 1161414330210518323
+    second: BigZombie - Attack_22
+  - first:
+      213: 6099566713474736782
+    second: BigZombie - Attack_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BigZombie - Attack_0
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 47
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e327943a0959d3110800000000000000
+      internalID: 1242313520671453758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 47
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86da6d4487d56b40800000000000000
+      internalID: 5432985488726873743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_2
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 47
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8bddb041d684f050800000000000000
+      internalID: 5833435650644106127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_3
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 47
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 469cea838a1a6a1e0800000000000000
+      internalID: -2186882825164240540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_4
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 47
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9c4d672d31726190800000000000000
+      internalID: -7970683883023938402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_5
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 47
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 681ee52ce525343c0800000000000000
+      internalID: -4376563845932588666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_6
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 47
+        width: 25
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdff3bdeb1225f110800000000000000
+      internalID: 1293977971286343644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_7
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 47
+        width: 24
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e88084bc5e9b6e0800000000000000
+      internalID: -1821171913045012834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_8
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 47
+        width: 57
+        height: 38
+      alignment: 9
+      pivot: {x: 0.2763415, y: 0.505242}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac228f465b82c9c0800000000000000
+      internalID: -3908408323786789720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_9
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 47
+        width: 58
+        height: 38
+      alignment: 9
+      pivot: {x: 0.2939348, y: 0.515726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032660ea5fb834ae0800000000000000
+      internalID: -1566254358091898320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_12
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 47
+        width: 57
+        height: 38
+      alignment: 9
+      pivot: {x: 0.25886616, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712e36b035e2dc100800000000000000
+      internalID: 129810898471870999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_13
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 47
+        width: 57
+        height: 38
+      alignment: 9
+      pivot: {x: 0.2483831, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ae4a158c79fe1f0800000000000000
+      internalID: -1013424504516056429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_14
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 48
+        width: 55
+        height: 38
+      alignment: 9
+      pivot: {x: 0.22474699, y: 0.44233784}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f9f4484d8c1e8900800000000000000
+      internalID: 688519186162711033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_15
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 47
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.3223382, y: 0.48951602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f855d6563414a0410800000000000000
+      internalID: 1444038388245943695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_16
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 47
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.33848777, y: 0.48951602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2dc53c664f155c10800000000000000
+      internalID: 2041572393406025003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_17
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 47
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.33310348, y: 0.479032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f22fde7e97ecfb3e0800000000000000
+      internalID: -2035681483570679249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_18
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 47
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.30618533, y: 0.494758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ee3417f9787af40800000000000000
+      internalID: 5739705368976813679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_19
+      rect:
+        serializedVersion: 2
+        x: 2234
+        y: 47
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.35463735, y: 0.505242}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a016ee141b589c20800000000000000
+      internalID: 3213418476104716453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_20
+      rect:
+        serializedVersion: 2
+        x: 2360
+        y: 47
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.37250978, y: 0.53018093}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb698b103167a4f50800000000000000
+      internalID: 6866430405885073083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_21
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 47
+        width: 27
+        height: 34
+      alignment: 9
+      pivot: {x: 0.45572916, y: 0.5292933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe18b10ce60260e30800000000000000
+      internalID: 4469295340253315567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_22
+      rect:
+        serializedVersion: 2
+        x: 2609
+        y: 47
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3350f3d0e2c2e1010800000000000000
+      internalID: 1161414330210518323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigZombie - Attack_23
+      rect:
+        serializedVersion: 2
+        x: 2737
+        y: 47
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e826578eb9306a450800000000000000
+      internalID: 6099566713474736782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0ccfba9c2e0d1404f980b16f66426d4e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BigZombie - Attack_0: 1242313520671453758
+      BigZombie - Attack_1: 5432985488726873743
+      BigZombie - Attack_10: -9122016536597038705
+      BigZombie - Attack_11: 1141375294309110317
+      BigZombie - Attack_12: 129810898471870999
+      BigZombie - Attack_13: -1013424504516056429
+      BigZombie - Attack_14: 688519186162711033
+      BigZombie - Attack_15: 1444038388245943695
+      BigZombie - Attack_16: 2041572393406025003
+      BigZombie - Attack_17: -2035681483570679249
+      BigZombie - Attack_18: 5739705368976813679
+      BigZombie - Attack_19: 3213418476104716453
+      BigZombie - Attack_2: 5833435650644106127
+      BigZombie - Attack_20: 6866430405885073083
+      BigZombie - Attack_21: 4469295340253315567
+      BigZombie - Attack_22: 1161414330210518323
+      BigZombie - Attack_23: 6099566713474736782
+      BigZombie - Attack_3: -2186882825164240540
+      BigZombie - Attack_4: -7970683883023938402
+      BigZombie - Attack_5: -4376563845932588666
+      BigZombie - Attack_6: 1293977971286343644
+      BigZombie - Attack_7: -1821171913045012834
+      BigZombie - Attack_8: -3908408323786789720
+      BigZombie - Attack_9: -1566254358091898320
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

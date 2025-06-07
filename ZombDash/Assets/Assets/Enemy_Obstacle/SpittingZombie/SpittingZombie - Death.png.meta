@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 31f611fdefea95944bea773c5dadaa6c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4630748889496187007
+    second: SpittingZombie - Death_0
+  - first:
+      213: -2514310807370876420
+    second: SpittingZombie - Death_1
+  - first:
+      213: 2501242845481735383
+    second: SpittingZombie - Death_2
+  - first:
+      213: 1700354274273892905
+    second: SpittingZombie - Death_3
+  - first:
+      213: 7345795536027127190
+    second: SpittingZombie - Death_4
+  - first:
+      213: -600876003075178837
+    second: SpittingZombie - Death_5
+  - first:
+      213: 6793309766669351160
+    second: SpittingZombie - Death_6
+  - first:
+      213: -2805819448612990190
+    second: SpittingZombie - Death_7
+  - first:
+      213: 335280520450375597
+    second: SpittingZombie - Death_8
+  - first:
+      213: -2966728904515233172
+    second: SpittingZombie - Death_9
+  - first:
+      213: 7031631000452217146
+    second: SpittingZombie - Death_10
+  - first:
+      213: -1498367489197374915
+    second: SpittingZombie - Death_11
+  - first:
+      213: 4922246425438962702
+    second: SpittingZombie - Death_12
+  - first:
+      213: 7463255078414549827
+    second: SpittingZombie - Death_13
+  - first:
+      213: 264564458750838869
+    second: SpittingZombie - Death_14
+  - first:
+      213: 3360080625580600671
+    second: SpittingZombie - Death_15
+  - first:
+      213: 3844485853495341463
+    second: SpittingZombie - Death_16
+  - first:
+      213: -6281432325904562633
+    second: SpittingZombie - Death_17
+  - first:
+      213: 4021242413392935435
+    second: SpittingZombie - Death_18
+  - first:
+      213: -7421588893881905173
+    second: SpittingZombie - Death_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 35
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpittingZombie - Death_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 47
+        width: 19
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70747a8499b34040800000000000000
+      internalID: 4630748889496187007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_1
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 47
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf9bbbf54af5b1dd0800000000000000
+      internalID: -2514310807370876420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_2
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 47
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d41de5ad1336b220800000000000000
+      internalID: 2501242845481735383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_3
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 47
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92a996e143fd89710800000000000000
+      internalID: 1700354274273892905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_4
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 54
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d0c8dce1281f560800000000000000
+      internalID: 7345795536027127190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_5
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 47
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baeb5a2757249a7f0800000000000000
+      internalID: -600876003075178837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_6
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 47
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8b4838d3fa64e50800000000000000
+      internalID: 6793309766669351160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_7
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 47
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2135a8dc31abf09d0800000000000000
+      internalID: -2805819448612990190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_8
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 47
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf7d816bd727a400800000000000000
+      internalID: 335280520450375597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_9
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 47
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a5c7d97cf04d6d0800000000000000
+      internalID: -2966728904515233172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_10
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 47
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a393495c32f559160800000000000000
+      internalID: 7031631000452217146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_11
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 47
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32856f05bab43be0800000000000000
+      internalID: -1498367489197374915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_12
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 47
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04c9357b055f4440800000000000000
+      internalID: 4922246425438962702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_13
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 47
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3438709a3fec29760800000000000000
+      internalID: 7463255078414549827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_14
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 47
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 558890839fbeba300800000000000000
+      internalID: 264564458750838869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_15
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 47
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d6768c68761ae20800000000000000
+      internalID: 3360080625580600671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_16
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 47
+        width: 47
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 791ba99c38b5a5530800000000000000
+      internalID: 3844485853495341463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_17
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 47
+        width: 47
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7368dcd749ed3d8a0800000000000000
+      internalID: -6281432325904562633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_18
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 47
+        width: 45
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a35066ba25ec730800000000000000
+      internalID: 4021242413392935435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpittingZombie - Death_19
+      rect:
+        serializedVersion: 2
+        x: 2334
+        y: 47
+        width: 44
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bef4f27e838310990800000000000000
+      internalID: -7421588893881905173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SpittingZombie - Death_0: 4630748889496187007
+      SpittingZombie - Death_1: -2514310807370876420
+      SpittingZombie - Death_10: 7031631000452217146
+      SpittingZombie - Death_11: -1498367489197374915
+      SpittingZombie - Death_12: 4922246425438962702
+      SpittingZombie - Death_13: 7463255078414549827
+      SpittingZombie - Death_14: 264564458750838869
+      SpittingZombie - Death_15: 3360080625580600671
+      SpittingZombie - Death_16: 3844485853495341463
+      SpittingZombie - Death_17: -6281432325904562633
+      SpittingZombie - Death_18: 4021242413392935435
+      SpittingZombie - Death_19: -7421588893881905173
+      SpittingZombie - Death_2: 2501242845481735383
+      SpittingZombie - Death_3: 1700354274273892905
+      SpittingZombie - Death_4: 7345795536027127190
+      SpittingZombie - Death_5: -600876003075178837
+      SpittingZombie - Death_6: 6793309766669351160
+      SpittingZombie - Death_7: -2805819448612990190
+      SpittingZombie - Death_8: 335280520450375597
+      SpittingZombie - Death_9: -2966728904515233172
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
