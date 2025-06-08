@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Obstacle
+  - Collectable
+  - Enemy
+  - PlayerBullet
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -12,14 +17,14 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - LaneZ1
-  - LaneZ2
-  - LaneZ3
+  - Ground
   - Player
-  - 
-  - 
-  - 
+  - Obstacle
+  - Items
+  - Enemies
+  - PlayerProjectile
+  - EnemyProjectile
+  - Background
   - 
   - 
   - 

@@ -1,307 +1,501 @@
 using UnityEngine;
+using System.Collections; // Coroutine을 사용하기 위해 필요
 
+// 스크립트가 추가될 때 Rigidbody2D와 CapsuleCollider2D 컴포넌트가 자동으로 추가되도록 합니다.
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(AudioSource))] // AudioSource 컴포넌트 추가
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public float lineChangeDelay = 0.2f; // ���� ���� ������
+	// === 컴포넌트 참조 (유니티 에디터에서 연결) ===
+	[SerializeField] private Animator playerAnimator; // 플레이어 Animator 컴포넌트
+	[SerializeField] private Rigidbody2D playerRigidbody; // 플레이어 Rigidbody2D 컴포넌트
+	[SerializeField] private Transform groundCheck; // 땅 체크를 위한 오브젝트의 위치
+	[SerializeField] private LayerMask groundLayer; // 땅으로 인식할 레이어 (Ground, Platform 등)
+	[SerializeField] private CapsuleCollider2D playerCollider; // 플레이어의 메인 CapsuleCollider2D 컴포넌트 (슬라이딩 시 크기 조절용)
+	private AudioSource playerAudioSource; // 플레이어의 AudioSource 컴포넌트
 
-    // �÷��̾��� ���� Y�� ���� ��ġ (0: ��, 1: ���, 2: �Ʒ�)
-    public float[] laneYPositions = { 2f, 0f, -2f }; // ����: Z=1 (�� ����)�� Y=2, Z=2 (��� ����)�� Y=0, Z=3 (�Ʒ� ����)�� Y=-2
+	[Header("Player Settings")]
+	[SerializeField] private float baseMoveSpeed = 5f; // 플레이어의 기본 이동 속도 (게임 시작 시)
+	[SerializeField] private float accelerationRate = 0.1f; // 초당 이동 속도 증가량
+	[SerializeField] private float maxMoveSpeed = 15f; // 플레이어의 최대 이동 속도
 
-    // �÷��̾��� Z�� ���� �� (Z=1, Z=2, Z=3)
-    public float[] laneZDepths = { 1f, 2f, 3f }; // Z�� �� 1, 2, 3 (���� Z�� depth)
+	[SerializeField] private float jumpForce = 10f; // 점프 시 가해질 힘
+	[SerializeField] private float groundCheckRadius = 0.2f; // 땅 체크 원의 반지름
+	[SerializeField] private float shootCooldownTime = 0.5f; // 사격 쿨다운 시간
+	[SerializeField] private float meleeAttackDuration = 0.3f; // 근접 공격 애니메이션 지속 시간 또는 판정 시간
+	[SerializeField] private Transform bulletSpawnPoint; // 총알이 생성될 위치
+	[SerializeField] private GameObject playerBulletPrefab; // 플레이어 총알 프리팹 (Inspector에서 연결)
+	[SerializeField] private Transform meleeAttackPoint; // 근접 공격 판정 시작점 (빈 오브젝트로 설정)
+	[SerializeField] private float meleeAttackRadius = 0.5f; // 근접 공격 판정 범위
+	[SerializeField] private LayerMask attackableLayer; // 공격 가능한 오브젝트 레이어 (Enemy, EnemyProjectile 등)
 
-    // ���̾� ����ũ�� �ν����Ϳ��� �Ҵ�
-    public LayerMask laneZ1Layer; // LaneZ1 ���̾� ����ũ
-    public LayerMask laneZ2Layer; // LaneZ2 ���̾� ����ũ
-    public LayerMask laneZ3Layer; // LaneZ3 ���̾� ����ũ
+	[Header("Collider Sizes")]
+	[SerializeField] private Vector2 standingColliderSize = new Vector2(0.8f, 1.8f); // 서 있을 때 콜라이더 크기
+	[SerializeField] private Vector2 slidingColliderSize = new Vector2(1.6f, 0.9f); // 슬라이딩 시 콜라이더 크기
+	[SerializeField] private Vector2 standingColliderOffset = new Vector2(0f, 0f); // 서 있을 때 콜라이더 오프셋
+	[SerializeField] private Vector2 slidingColliderOffset = new Vector2(0f, -0.45f); // 슬라이딩 시 콜라이더 오프셋 (조절 필요)
 
-    public float horizontalMoveSpeed = 3f; // A/D Ű�� �յ� �̵� �ӵ�
-    public Transform playerCamera; // ī�޶� ���� (������ ����)
-    public float cameraMinX = -5f; // ī�޶� ���� �÷��̾� �ּ� X ��ġ (ȭ�� ���� ��)
-    public float cameraMaxX = 5f; // ī�޶� ���� �÷��̾� �ּ� X ��ġ (ȭ�� ������ ��)
+	[Header("Health and Damage Settings")]
+	[SerializeField] private int maxHealth = 3; // 최대 체력
+	[SerializeField] private int maxGuardHealth = 1; // 최대 가드 체력
+	[SerializeField] private float invincibilityDuration = 1.0f; // 피격 후 무적 시간
 
-    public float groundTolerance = 0.1f; // �÷��̾ ���� ���� Y�� ��ġ�� �����ߴٰ� �Ǵ��� ���� ����
+	[Header("Ammo Settings")]
+	[SerializeField] private int maxAmmo = 4; // 최대 탄약 수
+	[SerializeField] private int initialAmmo = 2; // 게임 시작 시 지급될 초기 탄약 수
 
-    private Rigidbody2D rb;
-    private Animator animator;
-    private int currentLaneIndex = 1; // 0: �� ���� (Z=1, Y=2), 1: ��� ���� (Z=2, Y=0), 2: �Ʒ� ���� (Z=3, Y=-2)
-    private float lastLaneChangeTime;
-    private bool isHit = false; // �ǰ� ���� ����
-    private bool isDead = false; // ��� ���� ����
+	[Header("Audio Clips")] // 오디오 클립 추가
+	[SerializeField] private AudioClip jumpSound; // 점프 사운드
+	[SerializeField] private AudioClip landSound; // 착지 사운드
+	[SerializeField] private AudioClip hurtSound; // 피격 사운드
 
-    private bool isCurrentlyInAir = false; // �÷��̾ ���� ���̰ų� ���� ������ ��ũ��Ʈ���� ����
-    private float jumpStartLaneYPosition; // ������ ������ ������ ��Ȯ�� Y�� ��ġ ����
+	// === 내부 상태 변수 ===
+	private int currentHealth;
+	private int currentGuardHealth;
+	private int currentAmmo;
+	private bool isGrounded; // 플레이어가 땅에 닿아 있는지 여부
+	private bool wasGroundedLastFrame; // 이전 프레임에 땅에 닿아 있었는지 여부 (착지 감지용)
+	private bool isSliding; // 슬라이딩 중인지 여부
+	private bool isJumping; // 점프 중인지 여부 (공중 상태 유지용)
+	private float lastShootTime; // 마지막 사격 시간
+	private bool isInvincible; // 무적 상태 여부
+	private float invincibilityEndTime; // 무적 종료 시간
+	private bool isMeleeAttacking; // 근접 공격 중인지 여부
 
-    // �÷��̾��� �ʱ� �ݶ��̴� ũ��� �������� ������ ����
-    private CapsuleCollider2D playerCollider;
-    private Vector2 originalColliderSize;
-    private Vector2 originalColliderOffset;
+	// 게임 오버 상태를 관리하는 public 속성
+	public bool IsDead { get; private set; }
+	public int CurrentHealth => currentHealth; // 외부에서 체력 읽기용
+	public int CurrentGuardHealth => currentGuardHealth; // 외부에서 가드체력 읽기용
+	public int CurrentAmmo => currentAmmo; // 외부에서 탄약 읽기용
+	public float CurrentMoveSpeed => currentMoveSpeed; // 현재 이동 속도를 외부에서 읽기용
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        playerCollider = GetComponent<CapsuleCollider2D>(); // CapsuleCollider2D ��� ����
-        if (playerCollider != null)
-        {
-            originalColliderSize = playerCollider.size;
-            originalColliderOffset = playerCollider.offset;
-        }
+	private float currentMoveSpeed; // 플레이어의 현재 이동 속도 (내부 사용)
 
-        lastLaneChangeTime = Time.time;
+	// === 유니티 생명주기 메서드 ===
 
-        // ���� ���� �ô� ���� �ִٰ� ����
-        animator.SetBool("IsGrounded", true);
-        isCurrentlyInAir = false;
+	void Awake()
+	{
+		if (playerAnimator == null) playerAnimator = GetComponent<Animator>();
+		if (playerRigidbody == null) playerRigidbody = GetComponent<Rigidbody2D>();
+		if (playerCollider == null) playerCollider = GetComponent<CapsuleCollider2D>();
+		if (playerAudioSource == null) playerAudioSource = GetComponent<AudioSource>(); // AudioSource 컴포넌트 참조
 
-        // ���� ���� �� �÷��̾ ��� ����(Z=2, Y=0)���� ����
-        transform.position = new Vector3(transform.position.x, laneYPositions[currentLaneIndex], laneZDepths[currentLaneIndex]);
-        UpdatePlayerLayer(); // �ʱ� ���̾� ����
-    }
+		if (playerAnimator == null) Debug.LogError("PlayerAnimator is not found on this GameObject!");
+		if (playerRigidbody == null) Debug.LogError("PlayerRigidbody2D is not found on this GameObject!");
+		if (playerCollider == null) Debug.LogError("PlayerCollider (CapsuleCollider2D) is not found on this GameObject!");
+		if (groundCheck == null) Debug.LogError("GroundCheck Transform is not assigned in the Inspector! Please assign it.");
+		if (bulletSpawnPoint == null) Debug.LogError("Bullet Spawn Point Transform is not assigned in the Inspector!");
+		if (playerBulletPrefab == null) Debug.LogError("Player Bullet Prefab is not assigned in the Inspector!");
+		if (meleeAttackPoint == null) Debug.LogError("Melee Attack Point Transform is not assigned in the Inspector!");
+		if (playerAudioSource == null) Debug.LogError("Player AudioSource is not found on this GameObject!"); // AudioSource 확인
+	}
 
-    void Update()
-    {
-        // �ǰ� �Ǵ� ��� �� ���� �Ҵ�
-        if (isHit || isDead)
-        {
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-            return;
-        }
+	void Start()
+	{
+		// 초기 스탯 설정
+		currentHealth = maxHealth;
+		currentGuardHealth = 0;
+		currentAmmo = initialAmmo;
+		currentMoveSpeed = baseMoveSpeed; // 게임 시작 시 기본 이동 속도로 설정
 
-        // 1. �ڵ� �޸��� (X�� �̵�) - �׻� ����
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+		wasGroundedLastFrame = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+		isGrounded = wasGroundedLastFrame;
+		lastShootTime = -shootCooldownTime;
+		isJumping = false;
+		IsDead = false;
+		isInvincible = false;
+		isMeleeAttacking = false;
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("W key pressed!"); // 이 줄 추가
-            HandleLaneChange();
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log("S key pressed!"); // 이 줄 추가
-            HandleLaneChange();
-        }
+		// 게임 시작 시 초기 UI 업데이트 (UIManager가 준비되었을 때만)
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.UpdateAllGameplayUI();
+		}
+	}
 
-        // 3. 전후 이동 (A/D) - (이건 된다고 하셨으니 일단 스킵)
-        // HandleHorizontalMovement();
+	void Update()
+	{
+		if (IsDead) return;
 
-        // 4. 점프 (Space)
-        if (Input.GetButtonDown("Jump")) // GetButtonDown("Jump")는 Spacebar에 매핑됩니다.
-        {
-            Debug.Log("Spacebar pressed (Jump)!"); // 이 줄 추가
-            HandleJump();
-        }
+		// 게임이 정지 상태가 아닐 때만 속도 증가 (인트로 중에는 가속 안 되도록)
+		// UIManager.Instance.IsGameStarted가 true일 때만 속도 증가
+		if (Time.timeScale > 0f && UIManager.Instance != null && UIManager.Instance.IsGameStarted)
+		{
+			currentMoveSpeed = Mathf.Min(currentMoveSpeed + accelerationRate * Time.deltaTime, maxMoveSpeed);
+		}
 
-        // 5. 슬라이딩 (Ctrl)
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            Debug.Log("LeftControl key held (Slide)!"); // 이 줄 추가
-            HandleSlide();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl)) // Ctrl 키를 떼는 것도 로그로 확인
-        {
-            Debug.Log("LeftControl key released (Slide)!"); // 이 줄 추가
-            HandleSlide(); // 슬라이드 종료를 위해 다시 호출 (else 블록이 실행됨)
-        }
+		CheckGroundStatus();
+		playerAnimator.SetBool("IsGrounded", isGrounded);
+		playerAnimator.SetBool("IsJumping", isJumping);
 
-        // 6. 사격 (P)
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("P key pressed (Shoot)!"); // 이 줄 추가
-            HandleShoot();
-        }
-    }
+		// 무적 시간 관리
+		if (isInvincible && Time.time >= invincibilityEndTime)
+		{
+			isInvincible = false;
+			// GetComponent<SpriteRenderer>().color = Color.white; // 무적 종료 시 스프라이트 색상 복구 (선택 사항)
+		}
 
-    void FixedUpdate()
-    {
-        // ���� ������Ʈ�� FixedUpdate����
-        UpdateGroundStatusBasedOnYPosition();
-    }
+		// 인트로 화면이 끝나고 게임이 시작되었을 때만 일반 입력 처리
+		if (UIManager.Instance != null && UIManager.Instance.IsGameStarted)
+		{
+			HandleInput();
+		}
+	}
 
-    void LateUpdate()
-    {
-        if (playerCamera != null)
-        {
-            Vector3 cameraTargetPos = new Vector3(transform.position.x, playerCamera.position.y, playerCamera.position.z);
-            playerCamera.position = Vector3.Lerp(playerCamera.position, cameraTargetPos, Time.deltaTime * 5f);
-        }
-    }
+	void FixedUpdate()
+	{
+		if (IsDead)
+		{
+			playerRigidbody.linearVelocity = Vector2.zero;
+			return;
+		}
+		// 현재 증가된 이동 속도를 적용
+		playerRigidbody.linearVelocity = new Vector2(currentMoveSpeed, playerRigidbody.linearVelocity.y);
+	}
 
-    void HandleLaneChange()
-    {
-        // ���߿����� ���� ���� ������ �� ���� ������ ����
-        if (Time.time - lastLaneChangeTime > lineChangeDelay && !isCurrentlyInAir)
-        {
-            int previousLaneIndex = currentLaneIndex;
+	// === 입력 처리 메서드 ===
+	private void HandleInput()
+	{
+		// 게임이 일시 정지 상태가 아닐 때만 플레이어 조작 입력 처리
+		// Time.timeScale == 0f (일시 정지)일 때는 입력 무시
+		if (Time.timeScale > 0f)
+		{
+			HandleJumpInput();
+			HandleSlideInput();
+			HandleShootInput();
+			HandleSlashInput();
+		}
+	}
 
-            if (Input.GetKeyDown(KeyCode.W)) // �� ���� �̵� (Z���� �۾���, Y���� Ŀ��)
-            {
-                if (currentLaneIndex > 0)
-                {
-                    currentLaneIndex--;
-                    lastLaneChangeTime = Time.time;
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.S)) // �Ʒ� ���� �̵� (Z���� Ŀ��, Y���� �۾���)
-            {
-                if (currentLaneIndex < laneYPositions.Length - 1)
-                {
-                    currentLaneIndex++;
-                    lastLaneChangeTime = Time.time;
-                }
-            }
+	private void HandleJumpInput()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (isGrounded && !isSliding)
+			{
+				playerRigidbody.linearVelocity = new Vector2(playerRigidbody.linearVelocity.x, jumpForce);
+				playerAnimator.SetTrigger("JumpTrigger");
+				isJumping = true;
 
-            // ���� �ε����� ����Ǿ��ٸ� Y��, Z�� ��ġ�� ��� ������Ʈ�ϰ� �÷��̾� ���̾� ������Ʈ
-            if (previousLaneIndex != currentLaneIndex)
-            {
-                transform.position = new Vector3(transform.position.x, laneYPositions[currentLaneIndex], laneZDepths[currentLaneIndex]);
-                UpdatePlayerLayer(); // �÷��̾� ���̾� ������Ʈ
-            }
-        }
-    }
+				// 점프 사운드 재생
+				if (jumpSound != null && playerAudioSource != null)
+				{
+					playerAudioSource.PlayOneShot(jumpSound);
+				}
+			}
+		}
+	}
 
-    void UpdatePlayerLayer()
-    {
-        string layerName = "";
-        switch (currentLaneIndex)
-        {
-            case 0: layerName = "LaneZ1"; break; // Z = 1 (�� ����)
-            case 1: layerName = "LaneZ2"; break; // Z = 2 (��� ����)
-            case 2: layerName = "LaneZ3"; break; // Z = 3 (�Ʒ� ����)
-        }
-        if (!string.IsNullOrEmpty(layerName))
-        {
-            gameObject.layer = LayerMask.NameToLayer(layerName);
-            // Debug.Log($"Player's layer changed to: {layerName} ({gameObject.layer})"); // ����׿�
-        }
-    }
+	private void HandleSlideInput()
+	{
+		bool currentSlideInput = Input.GetKey(KeyCode.S);
 
-    void HandleHorizontalMovement()
-    {
-        float currentX = transform.position.x;
-        float cameraX = playerCamera.position.x;
-        float minX = cameraX + cameraMinX;
-        float maxX = cameraX + cameraMaxX;
+		if (currentSlideInput && isGrounded && !isJumping)
+		{
+			if (!isSliding)
+			{
+				playerAnimator.SetBool("IsSliding", true);
+				isSliding = true;
+				playerCollider.size = slidingColliderSize;
+				playerCollider.offset = slidingColliderOffset;
+			}
+		}
+		else
+		{
+			if (isSliding)
+			{
+				playerAnimator.SetBool("IsSliding", false);
+				isSliding = false;
+				playerCollider.size = standingColliderSize;
+				playerCollider.offset = standingColliderOffset;
+			}
+		}
+	}
 
-        float horizontalInput = 0f;
-        if (Input.GetKey(KeyCode.A))
-        {
-            horizontalInput = -1f;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            horizontalInput = 1f;
-        }
+	private void HandleShootInput()
+	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			if (!isSliding && Time.time >= lastShootTime + shootCooldownTime && currentAmmo > 0)
+			{
+				playerAnimator.SetTrigger("Shoot");
+				FireBullet();
+				lastShootTime = Time.time;
+			}
+			else if (currentAmmo <= 0)
+			{
+				Debug.Log("Not enough ammo to shoot!");
+			}
+		}
+	}
 
-        currentX += horizontalInput * horizontalMoveSpeed * Time.deltaTime;
-        transform.position = new Vector3(Mathf.Clamp(currentX, minX, maxX), transform.position.y, transform.position.z);
-    }
+	private void HandleSlashInput()
+	{
+		if (Input.GetKey(KeyCode.O))
+		{
+			if (!isMeleeAttacking)
+			{
+				playerAnimator.SetBool("IsSlashing", true);
+				isMeleeAttacking = true;
+				StartCoroutine(PerformMeleeAttackRoutine());
+			}
+		}
+		else
+		{
+			playerAnimator.SetBool("IsSlashing", false);
+		}
+	}
 
-    void HandleJump()
-    {
-        // Space �ٸ� ������ ���� ���� ���� ���� ���� ���
-        if (Input.GetButtonDown("Jump") && animator.GetBool("IsGrounded"))
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            animator.SetBool("IsJumping", true);
-            animator.SetBool("IsGrounded", false);
+	// === 총알 발사 로직 ===
+	private void FireBullet()
+	{
+		if (playerBulletPrefab != null && bulletSpawnPoint != null)
+		{
+			Instantiate(playerBulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+			currentAmmo--;
+			Debug.Log($"Player Fired. Current Ammo: {currentAmmo}");
+			if (UIManager.Instance != null)
+			{
+				UIManager.Instance.UpdatePlayerAmmo(currentAmmo);
+			}
+		}
+	}
 
-            isCurrentlyInAir = true;
-            // ���� ���� Y ��ġ�� ���� ������ ���� Y ��ġ�� �����մϴ�.
-            jumpStartLaneYPosition = laneYPositions[currentLaneIndex];
-        }
-    }
+	// === 근접 공격 로직 ===
+	private IEnumerator PerformMeleeAttackRoutine()
+	{
+		yield return new WaitForSeconds(meleeAttackDuration);
 
-    void HandleSlide()
-    {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            animator.SetBool("IsSliding", true);
-            if (playerCollider != null)
-            {
-                playerCollider.size = new Vector2(originalColliderSize.x, originalColliderSize.y / 2);
-                playerCollider.offset = new Vector2(originalColliderOffset.x, originalColliderOffset.y - originalColliderSize.y / 4);
-            }
-        }
-        else
-        {
-            animator.SetBool("IsSliding", false);
-            if (playerCollider != null)
-            {
-                playerCollider.size = originalColliderSize;
-                playerCollider.offset = originalColliderOffset;
-            }
-        }
-    }
+		Collider2D[] hitObjects = Physics2D.OverlapCircleAll(meleeAttackPoint.position, meleeAttackRadius, attackableLayer);
 
-    void HandleShoot()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            animator.SetTrigger("ShootTrigger");
-            // TODO: �Ѿ� ���� �� �߻� ���� �߰�
-        }
-    }
+		foreach (Collider2D hit in hitObjects)
+		{
+			if (hit.CompareTag("Enemy"))
+			{
+				Zombie zombie = hit.GetComponent<Zombie>();
+				if (zombie != null)
+				{
+					zombie.TakeDamage(1); // 좀비 체력 -1 (일반/발사 좀비 공통)
+					Debug.Log($"Melee hit Enemy: {hit.name}");
+				}
+			}
+			else if (hit.CompareTag("EnemyProjectile")) // 발사 좀비의 발사체 파괴
+			{
+				ZombieProjectile zombieProj = hit.GetComponent<ZombieProjectile>();
+				if (zombieProj != null)
+				{
+					// 발사체는 근접 공격으로만 파괴 가능
+					zombieProj.DestroyProjectile();
+					Debug.Log($"Melee destroyed Enemy Projectile: {hit.name}");
+				}
+			}
+		}
 
-    void UpdateAnimatorParameters()
-    {
-        // IsGrounded �Ķ���ʹ� FixedUpdate�� UpdateGroundStatusBasedOnYPosition()���� ������Ʈ
-    }
+		isMeleeAttacking = false;
+		playerAnimator.SetBool("IsSlashing", false);
+	}
 
-    // �÷��̾ ���� ���� ������ Y�࿡ �����ߴ��� Ȯ���ϴ� �Լ�
-    void UpdateGroundStatusBasedOnYPosition()
-    {
-        // �÷��̾ ���߿� �� �ִ� ������ ���� ���� ���� üũ
-        if (isCurrentlyInAir)
-        {
-            // Debug.Log($"Player Y: {transform.position.y}, Target Y: {laneYPositions[currentLaneIndex]}, Velocity Y: {rb.velocity.y}");
 
-            // �÷��̾ ���� ���̰� (rb.velocity.y <= 0)
-            // ���� Y ��ġ�� ��ǥ ���� Y ��ġ + ��� ���� ���� ���� ������ �����ߴٰ� �Ǵ�
-            if (rb.linearVelocity.y <= 0 && transform.position.y <= laneYPositions[currentLaneIndex] + groundTolerance)
-            {
-                // ���� ó��
-                isCurrentlyInAir = false;
-                animator.SetBool("IsJumping", false);
-                animator.SetBool("IsGrounded", true);
+	// === 땅 체크 및 공중 상태 관리 메서드 ===
+	private void CheckGroundStatus()
+	{
+		bool currentlyGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Y�� �ӵ��� 0���� �����Ͽ� ���� �ٵ��� ��
-                // Y�� ��ġ�� ���� ������ ��ǥ Y ��ġ�� ��Ȯ�� �����Ͽ� �̼��� ���� ���� (Z���� ����)
-                transform.position = new Vector3(transform.position.x, laneYPositions[currentLaneIndex], transform.position.z);
-            }
-        }
-        else // ���� ���� ���� Y�� ��ġ�� ��Ȯ�� �����ϵ��� �����մϴ�. (�̼��� ���� ���� ����)
-        {
-            if (Mathf.Abs(transform.position.y - laneYPositions[currentLaneIndex]) > groundTolerance)
-            {
-                transform.position = new Vector3(transform.position.x, laneYPositions[currentLaneIndex], transform.position.z);
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Y�� �ӵ��� 0���� ����
-            }
-        }
-    }
+		if (currentlyGrounded && !wasGroundedLastFrame)
+		{
+			playerAnimator.SetTrigger("LandTrigger");
+			isJumping = false;
+			playerAnimator.SetBool("IsJumping", false);
 
-    public void TakeHit()
-    {
-        if (isHit || isDead) return;
+			// 착지 사운드 재생
+			if (landSound != null && playerAudioSource != null)
+			{
+				playerAudioSource.PlayOneShot(landSound);
+			}
+		}
 
-        isHit = true;
-        animator.SetTrigger("HitTrigger");
-        Invoke("ResetHitState", 0.5f);
-    }
+		isGrounded = currentlyGrounded;
+		wasGroundedLastFrame = currentlyGrounded;
+	}
 
-    void ResetHitState()
-    {
-        isHit = false;
-    }
+	// === 충돌 감지 ===
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag("Obstacle"))
+		{
+			Obstacle obstacle = other.GetComponent<Obstacle>();
+			if (obstacle != null)
+			{
+				int damageAmount = obstacle.DamageAmount;
 
-    public void Die()
-    {
-        if (isDead) return;
+				if (obstacle.Type == Obstacle.ObstacleType.FallenStone)
+				{
+					if (!isSliding) // PlayerController 내의 isSliding 변수에 직접 접근
+					{
+						TakeDamage(damageAmount);
+						Debug.Log("Hit Fallen Stone while not sliding!");
+					}
+					else
+					{
+						Debug.Log("Slid over Fallen Stone successfully!");
+					}
+				}
+				else // 선인장 등 다른 장애물은 항상 피해
+				{
+					TakeDamage(damageAmount);
+					Debug.Log("Hit Cactus!"); // 또는 다른 장애물 이름
+				}
+			}
+		}
+		else if (other.CompareTag("Collectable"))
+		{
+			CollectableItem item = other.GetComponent<CollectableItem>();
+			if (item != null)
+			{
+				item.ApplyEffect(this);
+				Destroy(other.gameObject);
+			}
+		}
+		else if (other.CompareTag("Enemy"))
+		{
+			Zombie zombie = other.GetComponent<Zombie>();
+			if (zombie != null)
+			{
+				TakeDamage(zombie.DamageOnCollisionToPlayer);
+			}
+		}
+		else if (other.CompareTag("EnemyProjectile"))
+		{
+			ZombieProjectile zombieProj = other.GetComponent<ZombieProjectile>();
+			if (zombieProj != null)
+			{
+				TakeDamage(zombieProj.damageToPlayer);
+				zombieProj.DestroyProjectile();
+			}
+		}
+	}
 
-        isDead = true;
-        animator.SetTrigger("DeathTrigger");
-        // TODO: ���� ���� ���� �߰�
-    }
+	// === 피격 처리 ===
+	public void TakeDamage(int damage)
+	{
+		if (IsDead || isInvincible) return;
+
+		int finalDamage = damage;
+
+		if (currentGuardHealth > 0)
+		{
+			int guardAbsorb = Mathf.Min(finalDamage, currentGuardHealth);
+			currentGuardHealth -= guardAbsorb;
+			finalDamage -= guardAbsorb;
+		}
+
+		currentHealth -= finalDamage;
+
+		playerAnimator.SetTrigger("HurtTrigger");
+
+		// 피격 사운드 재생
+		if (hurtSound != null && playerAudioSource != null)
+		{
+			playerAudioSource.PlayOneShot(hurtSound);
+		}
+
+		isInvincible = true;
+		invincibilityEndTime = Time.time + invincibilityDuration;
+
+		Debug.Log($"Player Health: {currentHealth}, Guard Health: {currentGuardHealth}");
+
+		if (currentHealth <= 0)
+		{
+			Die();
+		}
+
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.UpdatePlayerHealth(currentHealth);
+			UIManager.Instance.UpdatePlayerGuardHealth(currentGuardHealth);
+		}
+	}
+
+	// === 플레이어 사망 처리 ===
+	private void Die()
+	{
+		IsDead = true;
+		playerAnimator.SetBool("IsDead", true);
+
+		currentMoveSpeed = 0; // 사망 시 이동 속도 0
+		playerRigidbody.linearVelocity = Vector2.zero;
+		playerRigidbody.gravityScale = 0;
+		playerCollider.enabled = false;
+
+		Debug.Log("Player has died!");
+
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.ShowGameOverUI();
+		}
+		else
+		{
+			Debug.LogError("UIManager.Instance is null! Cannot show game over UI.");
+		}
+	}
+
+	// === 아이템 획득 메서드 ===
+	public void AddScore(float amount)
+	{
+		if (ScoreManager.Instance != null)
+		{
+			ScoreManager.Instance.AddScore(amount);
+		}
+		else
+		{
+			Debug.LogWarning("ScoreManager.Instance is null. Score not added to manager.");
+		}
+		Debug.Log($"Score Added: {amount}");
+	}
+
+	public void GainHealth(int amount)
+	{
+		currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+		Debug.Log($"Player gained Health. Current Health: {currentHealth}");
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.UpdatePlayerHealth(currentHealth);
+		}
+	}
+
+	public void GainGuardHealth(int amount)
+	{
+		currentGuardHealth = Mathf.Min(currentGuardHealth + amount, maxGuardHealth);
+		Debug.Log($"Player gained Guard Health. Current Guard Health: {currentGuardHealth}");
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.UpdatePlayerGuardHealth(currentGuardHealth);
+		}
+	}
+
+	public void AddAmmo(int amount)
+	{
+		currentAmmo = Mathf.Min(currentAmmo + amount, maxAmmo);
+		Debug.Log($"Player gained Ammo. Current Ammo: {currentAmmo}");
+		if (UIManager.Instance != null)
+		{
+			UIManager.Instance.UpdatePlayerAmmo(currentAmmo);
+		}
+	}
+
+	// === 시각화를 위한 기즈모 (Gizmos) 그리기 ===
+	void OnDrawGizmos()
+	{
+		if (groundCheck != null)
+		{
+			Gizmos.color = isGrounded ? Color.green : Color.red;
+			Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+		}
+		if (meleeAttackPoint != null)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(meleeAttackPoint.position, meleeAttackRadius);
+		}
+	}
 }

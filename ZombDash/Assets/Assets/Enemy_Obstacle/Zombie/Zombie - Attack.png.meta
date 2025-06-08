@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a7f6829f79ed2c4b822f735ef036801
+guid: 62a4c2a7ac9765545b1359cb9ba37e6f
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -132,7 +132,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Standalone
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -146,6 +146,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -393,7 +406,7 @@ TextureImporter:
         width: 32
         height: 28
       alignment: 9
-      pivot: {x: 0.39882278, y: 0.5266857}
+      pivot: {x: 0.4068756, y: 0.5163732}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -415,7 +428,7 @@ TextureImporter:
         width: 27
         height: 28
       alignment: 9
-      pivot: {x: 0.31551558, y: 0.5000003}
+      pivot: {x: 0.28775138, y: 0.50818634}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,7 +450,7 @@ TextureImporter:
         width: 26
         height: 28
       alignment: 9
-      pivot: {x: 0.346736, y: 0.50889546}
+      pivot: {x: 0.3148569, y: 0.5163735}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -459,7 +472,7 @@ TextureImporter:
         width: 24
         height: 28
       alignment: 9
-      pivot: {x: 0.35472107, y: 0.50889546}
+      pivot: {x: 0.35673523, y: 0.516373}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -481,7 +494,7 @@ TextureImporter:
         width: 21
         height: 28
       alignment: 9
-      pivot: {x: 0.42885044, y: 0.50889546}
+      pivot: {x: 0.40176246, y: 0.49999973}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -564,7 +577,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c42a42609f1a26f4aafc1595013f5379
+    spriteID: eb05a950fb836e04a8b85ea7399f9a73
     internalID: 0
     vertices: []
     indices: 

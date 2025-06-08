@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c8ada227fc1c83478f5419ae568a107
+guid: 5d8999c9cc0db29488ce8d4a9eb302b7
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -165,7 +165,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Standalone
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -179,6 +179,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -250,7 +263,7 @@ TextureImporter:
         width: 16
         height: 37
       alignment: 9
-      pivot: {x: 0.4873991, y: 0.4182634}
+      pivot: {x: 0.48792553, y: 0.42687422}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -268,11 +281,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 301
-        y: 49
+        y: 47
         width: 24
-        height: 37
+        height: 39
       alignment: 9
-      pivot: {x: 0.659612, y: 0.42371243}
+      pivot: {x: 0.6939532, y: 0.41925743}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -290,11 +303,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 424
-        y: 52
+        y: 48
         width: 24
-        height: 34
+        height: 39
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 1.0194511, y: 0.34755737}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -316,7 +329,7 @@ TextureImporter:
         width: 23
         height: 37
       alignment: 9
-      pivot: {x: 1.15, y: 0.5}
+      pivot: {x: 1.1388417, y: 0.45391124}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -336,9 +349,9 @@ TextureImporter:
         x: 677
         y: 47
         width: 26
-        height: 30
+        height: 32
       alignment: 9
-      pivot: {x: 1.1, y: 0.5}
+      pivot: {x: 0.9, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,9 +371,9 @@ TextureImporter:
         x: 805
         y: 47
         width: 27
-        height: 30
+        height: 19
       alignment: 9
-      pivot: {x: 1.02, y: 0.5}
+      pivot: {x: 0.98374885, y: 0.8731808}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -379,10 +392,10 @@ TextureImporter:
         serializedVersion: 2
         x: 933
         y: 47
-        width: 28
-        height: 30
+        width: 29
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.9351217, y: 0.43877828}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -402,9 +415,9 @@ TextureImporter:
         x: 1056
         y: 47
         width: 33
-        height: 30
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.9908928, y: 0.45000112}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -424,9 +437,9 @@ TextureImporter:
         x: 1178
         y: 47
         width: 39
-        height: 30
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.9769068, y: 0.45000112}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -443,12 +456,12 @@ TextureImporter:
       name: Zombie - Death_19
       rect:
         serializedVersion: 2
-        x: 1300
+        x: 1299
         y: 47
-        width: 45
-        height: 30
+        width: 46
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.96954876, y: 0.46875072}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -465,12 +478,12 @@ TextureImporter:
       name: Zombie - Death_21
       rect:
         serializedVersion: 2
-        x: 1427
+        x: 1426
         y: 47
-        width: 46
-        height: 30
+        width: 47
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.98509187, y: 0.48750043}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -487,12 +500,12 @@ TextureImporter:
       name: Zombie - Death_23
       rect:
         serializedVersion: 2
-        x: 1555
+        x: 1551
         y: 47
-        width: 47
-        height: 30
+        width: 49
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.9857003, y: 0.4812503}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -511,10 +524,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1682
         y: 47
-        width: 46
-        height: 30
+        width: 47
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.959561, y: 0.46875072}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -534,9 +547,9 @@ TextureImporter:
         x: 1810
         y: 47
         width: 47
-        height: 30
+        height: 32
       alignment: 9
-      pivot: {x: 1, y: 0.5}
+      pivot: {x: 0.95955837, y: 0.4812503}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -553,7 +566,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a68c8a66e0f8ae94e9f3a208e3f17d11
+    spriteID: 3d2780d6089b6594f86a849e0e277fe3
     internalID: 0
     vertices: []
     indices: 
